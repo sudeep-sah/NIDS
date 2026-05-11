@@ -1,0 +1,434 @@
+:root {
+    --primary-color: #1a1a2e;
+    --secondary-color: #16213e;
+    --accent-color: #0f3460;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --text-light: #e8e8e8;
+    --text-muted: #b8b8b8;
+    --card-bg: #1e2a3a;
+    --border-color: #2d3748;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f1419;
+    color: var(--text-light);
+}
+
+/* Navbar styling with right-aligned menu */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--text-light) !important;
+}
+
+.navbar-nav {
+    margin-left: auto !important; /* Push menu to the right */
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+.navbar-toggler {
+    border-color: var(--border-color);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-text {
+    color: var(--text-light) !important;
+}
+
+/* Card styling for dark theme */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+    background-color: var(--card-bg);
+    color: var(--text-light);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-light);
+}
+
+/* Button styling for dark theme */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: #0d2a4a;
+    border-color: #0d2a4a;
+}
+
+.feature-input-group {
+    margin-bottom: 1rem;
+}
+
+.feature-input-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: var(--text-light);
+}
+
+/* Form controls for dark theme */
+.form-control {
+    background-color: #2d3748;
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+.form-control:focus {
+    background-color: #374151;
+    border-color: var(--accent-color);
+    color: var(--text-light);
+    box-shadow: 0 0 0 0.2rem rgba(15, 52, 96, 0.25);
+}
+
+.form-label {
+    color: var(--text-light);
+}
+
+/* Progress bar styling */
+.progress {
+    border-radius: 10px;
+    background-color: #2d3748;
+}
+
+.progress-bar {
+    background-color: var(--accent-color);
+}
+
+.badge {
+    font-weight: 500;
+}
+
+/* Table styling for dark theme */
+.table {
+    color: var(--text-light);
+    border-color: var(--border-color);
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: var(--text-light);
+    background-color: var(--secondary-color);
+    border-color: var(--border-color);
+}
+
+.table td {
+    border-color: var(--border-color);
+    background-color: var(--card-bg);
+    padding: 0.75rem;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+.table tbody tr {
+    height: auto !important;
+    min-height: 50px !important;
+    /* Do NOT force display here so JS filters can hide rows with display: none */
+    border-spacing: 0;
+    border-collapse: separate;
+    position: relative;
+    z-index: 1;
+}
+
+.table tbody tr td {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: visible !important;
+    position: relative;
+    z-index: 1;
+    color: #ffffff !important;
+    background-color: transparent !important;
+}
+
+.table tbody tr:nth-of-type(odd) td {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.table tbody tr:nth-of-type(even) td {
+    background-color: var(--card-bg) !important;
+}
+
+.table-hover tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(128, 128, 128, 0.3) !important;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: rgba(128, 128, 128, 0.3) !important;
+    color: #ffffff !important;
+}
+
+.table tbody tr.selected,
+.table tbody tr.selected td {
+    background-color: rgba(128, 128, 128, 0.5) !important;
+    color: #ffffff !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: var(--card-bg) !important;
+}
+
+/* Mitigate button styling */
+.mitigate-btn {
+    transition: all 0.3s ease;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.mitigate-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.mitigate-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#mitigateAllBtn {
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#mitigateAllBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+}
+
+.detection-row.mitigated {
+    text-decoration: line-through;
+}
+
+/* Alert styling for dark theme */
+.alert {
+    animation: slideIn 0.3s ease-out;
+    border: none;
+    border-radius: 8px;
+}
+
+.alert-info {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: #85d1ff;
+    border-left: 4px solid var(--accent-color);
+}
+
+.alert-success {
+    background-color: rgba(39, 174, 96, 0.2);
+    color: #7ee2a8;
+    border-left: 4px solid var(--success-color);
+}
+
+.alert-warning {
+    background-color: rgba(243, 156, 18, 0.2);
+    color: #f8c471;
+    border-left: 4px solid var(--warning-color);
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #f1948a;
+    border-left: 4px solid var(--danger-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Results styling */
+.result-safe {
+    border-left: 4px solid var(--success-color);
+    background-color: rgba(39, 174, 96, 0.1);
+}
+
+.result-warning {
+    border-left: 4px solid var(--warning-color);
+    background-color: rgba(243, 156, 18, 0.1);
+}
+
+.result-danger {
+    border-left: 4px solid var(--danger-color);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Feature importance bars */
+.feature-bar {
+    height: 8px;
+    border-radius: 4px;
+    margin: 5px 0;
+    background-color: var(--accent-color);
+}
+
+/* Footer styling */
+footer.bg-dark {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Toast container */
+.toast {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+.toast-header {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0d2a4a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .navbar-nav {
+        text-align: right;
+        float: right;
+        padding: 1rem 0;
+    }
+    
+    .navbar-collapse {
+        background-color: var(--secondary-color);
+        border-radius: 8px;
+        margin-top: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Additional IDS-specific styling */
+.ids-status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.ids-status-online {
+    background-color: var(--success-color);
+    box-shadow: 0 0 8px var(--success-color);
+}
+
+.ids-status-warning {
+    background-color: var(--warning-color);
+    box-shadow: 0 0 8px var(--warning-color);
+}
+
+.ids-status-alert {
+    background-color: var(--danger-color);
+    box-shadow: 0 0 8px var(--danger-color);
+}
+/* --- Navbar right-aligned menu with status below (desktop) --- */
+@media (min-width: 992px) {
+  .navbar .navbar-collapse {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-end;      /* push contents to right edge */
+    gap: 0.25rem;
+  }
+
+  .navbar .navbar-nav {
+    flex-direction: row;        /* keep menu horizontal */
+    gap: 0.75rem;               /* spacing between items */
+    margin-left: 0 !important;  /* override earlier auto margins */
+  }
+
+  .navbar .navbar-text {
+    order: 2;                   /* ensure it sits below the menu */
+    font-size: 0.9rem;
+    opacity: 0.9;
+    width: 100%;
+    text-align: right;          /* right aligned under the menu */
+    margin-top: 0.1rem;
+  }
+}
+
+/* Keep mobile/tablet behavior tidy */
+@media (max-width: 991.98px) {
+  .navbar .navbar-collapse {
+    align-items: stretch;
+  }
+  .navbar .navbar-text {
+    margin-top: 0.5rem;
+    text-align: right;
+  }
+}

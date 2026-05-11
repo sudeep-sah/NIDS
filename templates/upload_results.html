@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5><i class="fas fa-chart-bar"></i> Batch Prediction Results</h5>
+                <a href="/upload" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-upload"></i> Upload Another File
+                </a>
+            </div>
+            <div class="card-body">
+                <!-- Summary Statistics -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card" style="background-color: #6f42c1 !important;">
+                            <div class="card-body text-center text-white">
+                                <h3 style="color: #ffffff !important;">{{ total_rows }}</h3>
+                                <p class="mb-0" style="color: #ffffff !important;">Total Rows Processed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-success text-white">
+                            <div class="card-body text-center">
+                                <h3>{{ normal_count }}</h3>
+                                <p class="mb-0">Normal Traffic</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-danger text-white">
+                            <div class="card-body text-center">
+                                <h3>{{ attack_count }}</h3>
+                                <p class="mb-0">Attack Traffic</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-info text-white">
+                            <div class="card-body text-center">
+                                <h3>{{ shap_plots|length }}</h3>
+                                <p class="mb-0">SHAP Explanations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Table -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h6 class="mb-0"><i class="fas fa-table"></i> Detailed Results</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                            <table class="table table-striped table-hover" style="margin-bottom: 0;">
+                                <thead style="position: sticky; top: 0; z-index: 10; background-color: var(--secondary-color);">
+                                    <tr>
+                                        <th style="padding: 12px;">Row #</th>
+                                        <th style="padding: 12px;">Prediction</th>
+                                        <th style="padding: 12px;">Confidence</th>
+                                        <th style="padding: 12px;">Status</th>
+                                        <th style="padding: 12px;">SHAP</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for result in results %}
+                                    <tr class="{% if result.error %}table-warning{% elif result.is_attack %}table-danger{% else %}table-success{% endif %}" style="border-bottom: 1px solid var(--border-color); display: table-row !important; visibility: visible !important; height: auto !important;">
+                                        <td style="padding: 12px; vertical-align: middle; color: #ffffff !important;"><strong>#{{ result.row_index }}</strong></td>
+                                        <td style="padding: 12px; vertical-align: middle; color: #ffffff !important;">
+                                            {% if result.error %}
+                                                <span class="text-danger">{{ result.prediction }}</span>
+                                            {% else %}
+                                                {{ result.prediction }}
+                                            {% endif %}
+                                        </td>
+                                        <td style="padding: 12px; vertical-align: middle;">
+                                            {% if not result.error %}
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar {% if result.is_attack %}bg-danger{% else %}bg-success{% endif %}" 
+                                                     style="width: 0%;" 
+                                                     data-confidence-width="{{ (result.confidence * 100)|round|int }}">
+                                                    {{ (result.confidence * 100)|round(1) }}%
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        </td>
+                                        <td style="padding: 12px; vertical-align: middle;">
+                                            {% if result.error %}
+                                                <span class="badge bg-warning">Error</span>
+                                            {% elif result.is_attack %}
+                                                <span class="badge bg-danger">{{ result.prediction }}</span>
+                                            {% else %}
+                                                <span class="badge bg-success">{{ result.prediction }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td style="padding: 12px; vertical-align: middle; color: #ffffff !important;">
+                                            {% if result.shap_plot %}
+                                                <i class="fas fa-chart-bar text-success"></i>
+                                            {% else %}
+                                                <span class="text-muted">-</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SHAP Explanations -->
+                {% if shap_plots %}
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0"><i class="fas fa-chart-bar"></i> SHAP Explanations</h6>
+                        <p class="text-muted mb-0 mt-2">Feature importance explanations for selected predictions:</p>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <div style="max-height: 600px; overflow-y: auto; padding: 1rem;">
+                            <div class="row">
+                                {% for plot in shap_plots %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6 class="mb-0">Row #{{ plot.row_index }} - Feature Importance</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <img src="/static/{{ plot.path }}" class="img-fluid" 
+                                                 alt="SHAP Explanation for Row {{ plot.row_index }}"
+                                                 onerror="this.style.display='none'">
+                                            <div class="mt-2 text-center">
+                                                <small class="text-muted">
+                                                    Blue bars: Features supporting prediction<br>
+                                                    Red bars: Features opposing prediction
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Row Details Modal -->
+<div class="modal fade" id="rowDetailsModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Row Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="rowDetailsContent">
+                <!-- Details will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showRowDetails(rowIndex) {
+    // For now, show a simple alert. You can enhance this to fetch actual row data
+    alert(`Details for row ${rowIndex}\n\nIn a full implementation, this would show:\n- All feature values\n- Detailed prediction analysis\n- Raw model outputs`);
+    
+    // Example of how you might implement AJAX loading:
+    /*
+    fetch(`/row_details/${rowIndex}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('rowDetailsContent').innerHTML = 
+                `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            new bootstrap.Modal(document.getElementById('rowDetailsModal')).show();
+        });
+    */
+}
+
+// Set progress bar widths from data attributes to keep inline CSS valid
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.progress-bar[data-confidence-width]').forEach(function (bar) {
+        const width = bar.getAttribute('data-confidence-width');
+        if (width !== null) {
+            bar.style.width = width + '%';
+        }
+    });
+});
+</script>
+{% endblock %}

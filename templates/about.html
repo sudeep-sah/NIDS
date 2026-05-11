@@ -1,0 +1,517 @@
+{% extends "base.html" %}
+
+{% block title %}About - AI Intrusion Detection System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+        <div class="mb-5">
+            <h1 class="display-4 mb-3">
+                <i class="fas fa-info-circle text-primary"></i> About Our Project
+            </h1>
+            <p class="lead">AI-Powered Network Intrusion Detection System (NIDS)</p>
+        </div>
+    </div>
+</div>
+
+<!-- Project Overview -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0"><i class="fas fa-shield-alt"></i> Project Overview</h3>
+            </div>
+            <div class="card-body">
+                <p class="lead">
+                    This is an <strong>AI-Powered Network Intrusion Detection System (NIDS)</strong> that uses Machine Learning and Deep Learning techniques to detect suspicious activities and cyber attacks in network traffic.
+                </p>
+                <p>
+                    Our system analyzes network traffic in real-time and identifies multiple attack types, such as DDoS attacks, port scanning, malware infections, and other security threats. The system uses advanced ML/DL models that detect threats with high accuracy.
+                </p>
+                <p>
+                    One of the most important features of this system is the use of <strong>Explainable AI (XAI)</strong> with SHAP (SHapley Additive exPlanations), which helps users understand why and how the model detected a specific attack. This transparency is crucial for security analysts to make informed decisions.
+                </p>
+                <p>
+                    Additionally, our system incorporates <strong>Adversarial Defense</strong> mechanisms to protect against adversarial attacks that attempt to fool machine learning models by introducing carefully crafted perturbations to network traffic features.
+                </p>
+                <p>
+                    One of the key strengths of our system is <strong>Cross-Domain Adaptability</strong>, which enables the system to work effectively across different network environments and domains. By providing specialized models for enterprise networks, IoT environments, and cloud infrastructures, the system ensures optimal performance regardless of the network domain.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Key Features -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0"><i class="fas fa-star"></i> Key Features</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-brain fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5>Multiple AI Models</h5>
+                                <p>Supports 4 different ML/DL models - CICIDS, IoT-23, TONIOT, and UNSW-NB15. Each model specializes in detecting different types of attacks with high precision and accuracy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-bolt fa-2x text-warning me-3"></i>
+                            <div>
+                                <h5>Real-Time Detection</h5>
+                                <p>Analyzes network traffic in real-time and instantly detects threats, enabling immediate action to be taken to prevent security breaches.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-chart-bar fa-2x text-info me-3"></i>
+                            <div>
+                                <h5>Explainable AI (SHAP)</h5>
+                                <p>Uses SHAP (SHapley Additive exPlanations) to identify which features were most important in attack detection, providing visual feature importance plots for transparency.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-shield-virus fa-2x text-danger me-3"></i>
+                            <div>
+                                <h5>Adversarial Defense</h5>
+                                <p>Implements surrogate adversarial models to detect and defend against adversarial attacks, including FGSM (Fast Gradient Sign Method) based attacks that attempt to fool ML models.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-file-upload fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5>Batch Processing</h5>
+                                <p>Upload CSV files to process multiple records simultaneously, perfect for bulk analysis and large-scale network traffic monitoring.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-tachometer-alt fa-2x text-success me-3"></i>
+                            <div>
+                                <h5>Comprehensive Dashboard</h5>
+                                <p>View system statistics, attack distribution, and detection history through an intuitive visual dashboard with charts and analytics.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-lightbulb fa-2x text-warning me-3"></i>
+                            <div>
+                                <h5>Mitigation Suggestions</h5>
+                                <p>Provides specific mitigation strategies and security recommendations for each detected attack type, helping administrators take appropriate action.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-check-circle fa-2x text-success me-3"></i>
+                            <div>
+                                <h5>One-Click Mitigation</h5>
+                                <p>Apply mitigation actions instantly with individual "Mitigate" buttons for each detection or use "Mitigate All" to process all detections at once with confirmation dialogs and visual feedback.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-history fa-2x text-info me-3"></i>
+                            <div>
+                                <h5>Prediction History</h5>
+                                <p>Maintains a complete history of all predictions with timestamps, model information, and adversarial attack detection for audit and analysis purposes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-globe-americas fa-2x text-success me-3"></i>
+                            <div>
+                                <h5>Cross-Domain Adaptability</h5>
+                                <p>Supports multiple network domains (Enterprise, IoT, Cloud) through specialized models, allowing the system to adapt to different network environments and maintain high accuracy across domains.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-filter fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5>Advanced Filtering System</h5>
+                                <p>Comprehensive filtering capabilities in the History section allow users to filter predictions by time range (1 hour, 6 hours, 24 hours, 7 days), model type, and attack type. This enables quick analysis and identification of specific patterns or threats in the detection history.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Models Information -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h3 class="mb-0"><i class="fas fa-robot"></i> Supported Models</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">
+                                    <i class="fas fa-network-wired"></i> CICIDS Dataset
+                                </h5>
+                                <p class="card-text">
+                                    <strong>Type:</strong> Machine Learning Pipeline<br>
+                                    <strong>Domain:</strong> Enterprise Networks<br>
+                                    <strong>Purpose:</strong> General network intrusion detection<br>
+                                    <strong>Features:</strong> Multiple attack categories including DDoS, Port Scan, Brute Force, SQL Injection<br>
+                                    <strong>Model:</strong> Scikit-learn Pipeline (Joblib)<br>
+                                    <strong>Adversarial Defense:</strong> Surrogate adversarial model available<br>
+                                    <strong>Cross-Domain:</strong> Optimized for traditional corporate network environments
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">
+                                    <i class="fas fa-wifi"></i> IoT-23 Dataset
+                                </h5>
+                                <p class="card-text">
+                                    <strong>Type:</strong> Gradient Boosting (XGBoost)<br>
+                                    <strong>Domain:</strong> IoT Environments<br>
+                                    <strong>Purpose:</strong> IoT device traffic analysis<br>
+                                    <strong>Features:</strong> Specialized for IoT network security threats<br>
+                                    <strong>Model:</strong> XGBoost Classifier<br>
+                                    <strong>Adversarial Defense:</strong> Surrogate adversarial model available<br>
+                                    <strong>Cross-Domain:</strong> Specialized for smart devices and IoT sensor networks
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning">
+                                    <i class="fas fa-cloud"></i> TONIOT Dataset
+                                </h5>
+                                <p class="card-text">
+                                    <strong>Type:</strong> Machine Learning Pipeline<br>
+                                    <strong>Domain:</strong> IoT & Cloud Infrastructures<br>
+                                    <strong>Purpose:</strong> IoT and cloud environment security<br>
+                                    <strong>Features:</strong> Comprehensive IoT attack detection<br>
+                                    <strong>Model:</strong> Scikit-learn Pipeline (Joblib)<br>
+                                    <strong>Adversarial Defense:</strong> Surrogate adversarial model available<br>
+                                    <strong>Cross-Domain:</strong> Designed for IoT devices and cloud-based services
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">
+                                    <i class="fas fa-server"></i> UNSW-NB15 Dataset
+                                </h5>
+                                <p class="card-text">
+                                    <strong>Type:</strong> Deep Learning (Neural Network)<br>
+                                    <strong>Domain:</strong> General Networks<br>
+                                    <strong>Purpose:</strong> Advanced threat detection<br>
+                                    <strong>Features:</strong> 10 attack categories including Analysis, Backdoor, DoS, Exploits, Fuzzers, Generic, Normal, Reconnaissance, Shellcode, Worms<br>
+                                    <strong>Model:</strong> Keras/TensorFlow Neural Network<br>
+                                    <strong>Adversarial Defense:</strong> Integrated adversarial tracking<br>
+                                    <strong>Cross-Domain:</strong> Versatile model for various network environments
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-info">
+                            <div class="card-body">
+                                <h5 class="card-title text-info">
+                                    <i class="fas fa-database"></i> NSL-KDD Dataset
+                                </h5>
+                                <p class="card-text">
+                                    <strong>Type:</strong> Machine Learning (XGBoost)<br>
+                                    <strong>Domain:</strong> General Network Intrusion Detection<br>
+                                    <strong>Purpose:</strong> Standard benchmark for intrusion detection systems<br>
+                                    <strong>Features:</strong> 4 key features including service, flag, src_bytes, and diff_srv_rate for efficient attack classification<br>
+                                    <strong>Model:</strong> XGBoost Classifier<br>
+                                    <strong>Attack Types:</strong> Dos, Probe, R2L (Remote to Local), U2R (User to Root), Normal<br>
+                                    <strong>Cross-Domain:</strong> Widely used benchmark dataset for evaluating IDS performance across different network environments
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h3 class="mb-0"><i class="fas fa-cogs"></i> How It Works</h3>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-primary me-2">1</span>
+                                    <h6 class="mb-0"><i class="fas fa-user-edit text-primary"></i> Input Data</h6>
+                                </div>
+                                <p class="mb-0">Enter feature values manually or upload CSV for batch evaluation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-success me-2">2</span>
+                                    <h6 class="mb-0"><i class="fas fa-microchip text-success"></i> Model Selection</h6>
+                                </div>
+                                <p class="mb-0">Choose CICIDS, IoT‑23, TONIOT, or UNSW‑NB15 based on your domain.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-info me-2">3</span>
+                                    <h6 class="mb-0"><i class="fas fa-brain text-info"></i> AI Analysis</h6>
+                                </div>
+                                <p class="mb-0">Models analyze traffic patterns and compare with learned behavior.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-danger me-2">4</span>
+                                    <h6 class="mb-0"><i class="fas fa-shield-alt text-danger"></i> Threat Detection</h6>
+                                </div>
+                                <p class="mb-0">Attack type and confidence score are generated for each input.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-warning text-dark me-2">5</span>
+                                    <h6 class="mb-0"><i class="fas fa-chart-pie text-warning"></i> SHAP Explanation</h6>
+                                </div>
+                                <p class="mb-0">Top contributing features are visualized for auditability.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-primary me-2">6</span>
+                                    <h6 class="mb-0"><i class="fas fa-clipboard-list text-primary"></i> Recommendations</h6>
+                                </div>
+                                <p class="mb-0">Attack-specific mitigation suggestions are provided and logged.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-success me-2">7</span>
+                                    <h6 class="mb-0"><i class="fas fa-shield-check text-success"></i> Mitigation</h6>
+                                </div>
+                                <p class="mb-0">Take action with one-click buttons on Dashboard or History pages.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0" style="background-color: var(--card-bg);">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-secondary me-2">8</span>
+                                    <h6 class="mb-0"><i class="fas fa-filter text-secondary"></i> Filter & Analyze</h6>
+                                </div>
+                                <p class="mb-0">Filter predictions by time range, model type, or attack type in History for detailed analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Technology Stack -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0"><i class="fas fa-code"></i> Technology Stack</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h5><i class="fas fa-server text-primary"></i> Backend</h5>
+                        <ul class="list-unstyled ms-4">
+                            <li><i class="fas fa-check text-success"></i> <strong>Flask</strong> - Python Web Framework for RESTful API</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>SQLite</strong> - Lightweight database for storing predictions and history</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>NumPy & Pandas</strong> - Data processing and manipulation</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>Scikit-learn</strong> - Machine Learning models and pipelines</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>TensorFlow/Keras</strong> - Deep Learning framework for neural networks</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>XGBoost</strong> - Gradient Boosting for IoT-23 model</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>SHAP</strong> - Explainable AI library for model interpretation</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>Matplotlib</strong> - Data visualization and plotting</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>Joblib</strong> - Model serialization and loading</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h5><i class="fas fa-desktop text-success"></i> Frontend</h5>
+                        <ul class="list-unstyled ms-4">
+                            <li><i class="fas fa-check text-success"></i> <strong>HTML5 & CSS3</strong> - Structure and styling</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>Bootstrap 5</strong> - Responsive UI framework with dark theme</li>
+                            <li><i class="fas fa-check text-success"></i> <strong>JavaScript</strong> - Client-side interactivity and AJAX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Use Cases -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h3 class="mb-0"><i class="fas fa-briefcase"></i> Use Cases</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                                <h5>Enterprise Networks</h5>
+                                <p class="card-text">Monitor corporate networks for security threats and detect intrusion attempts in real-time to protect sensitive business data.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body text-center">
+                                <i class="fas fa-home fa-3x text-success mb-3"></i>
+                                <h5>IoT Environments</h5>
+                                <p class="card-text">Detect attacks targeting smart home devices and IoT ecosystems, which are increasingly vulnerable to cyber threats.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body text-center">
+                                <i class="fas fa-cloud fa-3x text-warning mb-3"></i>
+                                <h5>Cloud Infrastructure</h5>
+                                <p class="card-text">Monitor cloud-based services and applications for security threats, protecting cloud-deployed resources from attacks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- System Capabilities -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h3 class="mb-0"><i class="fas fa-tasks"></i> System Capabilities</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-check-circle text-success"></i> Attack Detection</h5>
+                        <ul>
+                            <li>DoS / DDoS Attacks</li>
+                            <li>Brute Force Attacks</li>
+                            <li>Port Scanning Attacks</li>
+                            <li>SQL Injection Attacks</li>
+                            <li>Malware & Exploit Attacks</li>
+                            <li>Remote to Local (R2L) Attacks</li>
+                            <li>User to Root (U2R) Attacks</li>
+                            <li>Botnet & IoT-based Attacks</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-chart-line text-primary"></i> Features & Analytics</h5>
+                        <ul>
+                            <li>Hybrid ML–DL based intrusion detection for accurate attack identification</li>
+                            <li>Supports cross-domain traffic from IoT, Cloud, and Enterprise networks</li>
+                            <li>Real-time network traffic monitoring and attack detection</li>
+                            <li>SHAP-based Explainable AI for transparent model decisions</li>
+                            <li>Mitigation suggestions for each detected attack type</li>
+                            <li>Historical attack logs stored for analysis and auditing</li>
+                            <li>Filter-based attack history analysis for better insights</li>
+                            <li>Interactive dashboard with visual analytics and charts</li>
+                            <li>Automated mitigation suggestions for detected intrusions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card border-primary">
+            <div class="card-header bg-primary text-white text-center">
+                <h3 class="mb-0"><i class="fas fa-rocket"></i> Get Started</h3>
+            </div>
+            <div class="card-body text-center">
+                <p class="lead mb-4">Start using our AI-Powered Intrusion Detection System today!</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg me-md-2">
+                        <i class="fas fa-search"></i> Start Detection
+                    </a>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-success btn-lg me-md-2">
+                        <i class="fas fa-tachometer-alt"></i> View Dashboard
+                    </a>
+                    <a href="/upload" class="btn btn-info btn-lg me-md-2">
+                        <i class="fas fa-file-upload"></i> Upload CSV
+                    </a>
+                    <a href="{{ url_for('history') }}" class="btn btn-warning btn-lg">
+                        <i class="fas fa-history"></i> View History
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

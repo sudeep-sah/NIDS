@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Intrusion Detection System - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Floating Background Shapes */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+        
+        .shape:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            top: 20%;
+            right: -150px;
+            animation-delay: 5s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 350px;
+            height: 350px;
+            bottom: -175px;
+            left: 15%;
+            animation-delay: 10s;
+        }
+        
+        .shape:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 15s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(33, 37, 41, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff !important;
+        }
+        
+        .navbar-brand i {
+            color: #667eea;
+            margin-right: 0.5rem;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        
+        .nav-link:hover {
+            color: #667eea !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero-section .lead {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .btn-hero {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-hero-primary {
+            background: white;
+            color: #667eea;
+            border: 2px solid white;
+        }
+        
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .btn-hero-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-hero-outline:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+            background: #ffffff;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title .lead {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .feature-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: #6c757d;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        /* Models Section */
+        .models-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+        
+        .model-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #667eea;
+            margin-bottom: 2rem;
+        }
+        
+        .model-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+        
+        .model-card h5 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .model-card p {
+            color: #6c757d;
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section .lead {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        
+        .btn-cta {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-cta-primary {
+            background: white;
+            color: #667eea;
+            border: 2px solid white;
+        }
+        
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-cta-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-cta-outline:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: #212529;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section .lead {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('landing') }}">
+                <i class="fas fa-shield-alt"></i> AI IDS System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="{{ url_for('login') }}">
+                        <i class="fas fa-sign-in-alt me-1"></i>Login
+                    </a>
+                    <a class="nav-link" href="{{ url_for('register') }}">
+                        <i class="fas fa-user-plus me-1"></i>Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <div class="hero-content">
+                        <h1>
+                            <i class="fas fa-shield-alt me-3"></i>
+                            Advanced Intrusion Detection System
+                        </h1>
+                        <p class="lead">
+                            Multi-model AI-powered security solution for detecting and mitigating network threats in real-time
+                        </p>
+                        <div>
+                            <a href="{{ url_for('register') }}" class="btn btn-hero btn-hero-primary">
+                                <i class="fas fa-rocket me-2"></i>Get Started
+                            </a>
+                            <a href="{{ url_for('login') }}" class="btn btn-hero btn-hero-outline">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2><i class="fas fa-star me-2"></i>Key Features</h2>
+                <p class="lead">Comprehensive security monitoring and threat detection</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Multiple AI Models</h4>
+                        <p>Utilize various machine learning models including IoT-23, TON-IoT, UNSW-NB15, CICIDS, NSL-KDD, and KDD for comprehensive threat detection across different network environments.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Real-time Detection</h4>
+                        <p>Monitor network traffic in real-time and detect potential security threats with high accuracy and low latency. Get instant alerts for suspicious activities.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4>Advanced Analytics</h4>
+                        <p>Comprehensive dashboards and visualization tools to analyze security events and patterns. SHAP explanations for transparent AI decision-making.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Mitigation Suggestions</h4>
+                        <p>Get actionable recommendations for mitigating detected threats based on attack type and severity. One-click mitigation actions available.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h4>Historical Analysis</h4>
+                        <p>Track and analyze historical data with advanced filtering capabilities. Identify patterns and improve security posture over time.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-csv"></i>
+                        </div>
+                        <h4>Bulk Processing</h4>
+                        <p>Upload CSV files for batch processing and analysis of multiple network traffic records. Process hundreds of records simultaneously.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Models Section -->
+    <section class="models-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2><i class="fas fa-robot me-2"></i>Supported Detection Models</h2>
+                <p class="lead">Comprehensive coverage across various threat landscapes</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="model-card fade-in">
+                        <h5><i class="fas fa-wifi me-2"></i>IoT-23</h5>
+                        <p>Specialized in detecting IoT-based attacks and anomalies in connected device networks with XGBoost classifier.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="model-card fade-in">
+                        <h5><i class="fas fa-cloud me-2"></i>TON-IoT</h5>
+                        <p>Focused on IoT and industrial control system threats with comprehensive attack coverage using ML pipeline.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="model-card fade-in">
+                        <h5><i class="fas fa-server me-2"></i>UNSW-NB15</h5>
+                        <p>Modern network traffic analysis with mixed contemporary attack activities using deep learning neural networks.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="model-card fade-in">
+                        <h5><i class="fas fa-network-wired me-2"></i>CICIDS</h5>
+                        <p>Canadian Institute for Cybersecurity intrusion detection dataset with realistic traffic patterns and ML pipeline.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="model-card fade-in">
+                        <h5><i class="fas fa-database me-2"></i>NSL-KDD</h5>
+                        <p>Standard benchmark dataset for intrusion detection systems with XGBoost classifier for efficient attack classification.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="model-card fade-in">
+                        <h5><i class="fas fa-shield-virus me-2"></i>KDD Cup 99</h5>
+                        <p>Classic intrusion detection dataset with proven effectiveness in attack classification using XGBoost model.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Secure Your Network?</h2>
+                <p class="lead">Join thousands of security professionals using our advanced intrusion detection system</p>
+                <div>
+                    <a href="{{ url_for('register') }}" class="btn btn-cta btn-cta-primary">
+                        <i class="fas fa-rocket me-2"></i>Start Free
+                    </a>
+                    <a href="{{ url_for('about') }}" class="btn btn-cta btn-cta-outline">
+                        <i class="fas fa-info-circle me-2"></i>Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AI-Powered Intrusion Detection System. KNSIT All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(33, 37, 41, 0.98) !important';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                navbar.style.background = 'rgba(33, 37, 41, 0.95) !important';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

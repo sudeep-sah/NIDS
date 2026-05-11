@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-file-upload"></i> Batch Prediction - CSV Upload</h5>
+            </div>
+            <div class="card-body">
+                {% if error %}
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                </div>
+                {% endif %}
+                
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">Select Model:</label>
+                        <select class="form-select" name="model_name" required>
+                            <option value="">Choose a model...</option>
+                            {% for model in models %}
+                            <option value="{{ model }}">{{ model.upper() }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Upload CSV File:</label>
+                        <input type="file" class="form-control" name="csv_file" accept=".csv" required>
+                        
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Note:</strong> For large files, processing may take several minutes. 
+                        SHAP explanations will be generated for each row.
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-play"></i> Process CSV File
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h6><i class="fas fa-info-circle"></i> CSV Format Requirements</h6>
+            </div>
+            <div class="card-body">
+                <p>Your CSV file should have the following structure:</p>
+                <ul>
+                    <li>First row should contain column headers matching the model's feature names</li>
+                    <li>Each subsequent row represents one network traffic instance</li>
+                    <li>All features should be numerical values</li>
+                    <li>Missing values should be filled with 0 or appropriate default values</li>
+                </ul>
+                
+                <h6>Expected Features by Model:</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>IoT-23:</strong> L4_SRC_PORT, L4_DST_PORT, PROTOCOL, L7_PROTO, IN_BYTES, OUT_BYTES, IN_PKTS, OUT_PKTS, TCP_FLAGS, FLOW_DURATION_MILLISECONDS
+                    </div>
+                    <div class="col-md-6">
+                        <strong>TON-IOT:</strong> src_port, dst_port, duration, src_bytes, dst_bytes, and 50+ other features...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

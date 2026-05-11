@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Home - AI Intrusion Detection System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-4 mb-4">
+            <i class="fas fa-shield-alt text-primary"></i><br>
+            AI-Powered Intrusion Detection System
+        </h1>
+        <p class="lead mb-4">
+            Advanced machine learning and deep learning for resilient, explainable threat detection across IoT, enterprise, and cloud environments.
+        </p>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Hybrid ML/DL</h5>
+                        <p class="card-text">Combines traditional ML with deep learning for comprehensive threat detection.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Real-time Detection</h5>
+                        <p class="card-text">Continuous monitoring and instant threat identification with low latency.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-chart-bar fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Explainable AI</h5>
+                        <p class="card-text">SHAP and LIME integration for transparent, interpretable predictions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Quick Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ url_for('predict') }}" class="btn btn-outline-primary btn-lg w-100 mb-2">
+                            <i class="fas fa-play"></i> Start Detection
+                        </a>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-success btn-lg w-100 mb-2">
+                            <i class="fas fa-tachometer-alt"></i> View Dashboard
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">System Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Models Loaded:</span>
+                            <strong>{{ models|length }}</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Detection Engine:</span>
+                            <span class="badge bg-success">Operational</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Last Scan:</span>
+                            <strong>Just now</strong>
+                        </div>
+                        <hr>
+                        <small class="text-muted">Real-time monitoring active</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
